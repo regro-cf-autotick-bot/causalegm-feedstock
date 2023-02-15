@@ -1,5 +1,5 @@
 {% set name = "CausalEGM" %}
-{% set version = "0.2.6" %}
+{% set version = "0.2.7" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/CausalEGM-{{ version }}.tar.gz
-  sha256: a1e296d5e81852e1a7b9d41122cebc0dffad12fd3906753cec6690f8f477736a
+  sha256: 44aa1635266ce462353f67970c2594b407823035ffac880ca176c3076f2eb4c8
 
 build:
   noarch: python
   entry_points:
-    - "causalEGM = CausalEGM.cli:main"
+    - causalEGM = CausalEGM.cli:main
   script: {{ PYTHON }} -m pip install . -vv
   number: 0
 
