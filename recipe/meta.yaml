@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/CausalEGM-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/CausalEGM-{{ version }}.tar.gz
   sha256: a1e296d5e81852e1a7b9d41122cebc0dffad12fd3906753cec6690f8f477736a
 
 build:
@@ -14,14 +14,14 @@ build:
   entry_points:
     - "causalEGM = CausalEGM.cli:main"
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - tensorflow
     - scikit-learn
     - protobuf ==3.20.0
@@ -35,6 +35,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/SUwonglab/CausalEGM
